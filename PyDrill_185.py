@@ -13,7 +13,7 @@
 
 import sqlite3
 #creates db; connects to and holds connection
-conn = sqlite3.connect('164_redo.db')
+conn = sqlite3.connect('185_redo.db')
 
 # Table with autoincremented primary key
 with conn:
@@ -27,7 +27,7 @@ conn.close()#close connecton
 
 import sqlite3
 
-conn = sqlite3.connect('164_redo.db')
+conn = sqlite3.connect('185_redo.db')
 #insert .txt files into table
 
 with conn:
@@ -37,7 +37,7 @@ with conn:
     cur.execute("fileList")
  
     for files in fileList:
-        if files.endswith(".txt"):
+        if files.endswith("*.txt"):
             cur.execute("INSERT INTO table_Files VALUES(?,?)")
             cur.execute("SELECT fname FROM tbl_Files")#view corrected table with .txt files
     conn.commit()
