@@ -10,6 +10,7 @@ nutrition table.*/
 SELECT * FROM tbl_species;
 SELECT * FROM tbl_nutrition;
 
+
 SELECT tbl_species.species_name AS [Species Name], tbl_nutrition.nutrition_type AS [Nutrition Type]
-FROM tbl_species
-INNER JOIN  tbl_nutrition ON species_nutrition = nutrition_type;
+FROM (tbl_species
+INNER JOIN  tbl_nutrition ON tbl_species.species_nutrition = tbl_nutrition.nutrition_id)
