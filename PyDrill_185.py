@@ -48,7 +48,7 @@ conn = sqlite3.connect('185_redo.db')
 
 cur = conn.cursor()
 with conn:
-    cur.execute("SELECT fname FROM tbl_Files1")#view corrected table with .txt files
+    cur.execute("SELECT fname FROM table_Files1")#view corrected table with .txt files
     results = cur.fetchall()
     print(results)
     conn.commit()
