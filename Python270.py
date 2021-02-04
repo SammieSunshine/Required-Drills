@@ -20,37 +20,41 @@ You have been asked to create this UI."""
 import shutil
 import datetime
 import os
+import tkinter
 from tkinter import *
-from tkinter import filedialog
+import tkinter as tk
 
 
+#Main GUI frame
+class ParentWindow(Frame):
+    def __init__(self, master):
+        Frame.__init__(self, master)
 
-class Window(Tk):
-    def __init__(self):
-        super().__init__()
-        self.geometry('500x500')
+        self.master.title("F.I.O.N.A.: File I/O Now Automated")
+
+        #grids can be different dimensions
+        self.labelTxt = Label(text = "Choose Source", font=("Arial", 12))
+        self.labelTxt.grid(row=0,column=0, padx=20, pady=(20,0))
+
+        self.txtEntry = Entry(self.master, font=("Helvetica", 12))
+        self.txtEntry.grid(row=1, column=0, padx=(30,15), pady=(10,10), columnspan=2, sticky=W+E)
+
+        self.btnSubmit = Button(self.master, text="Submit", width=12, height=1, command=self.customEntry)
+        self.btnSubmit.grid(row=2, column=1, padx=(0,10) , pady=(0,10))
+
+        self.master.columnconfigure(1,weight=1)
+
+    #Custom GUI function for button commands 
+    def customEntry(self):
+        #retrieves/holds user input
+        txtEntryVariable = self.txtEntry.get()
+
+        
+        #An action for this template to do smething would go below here
+ 
+        
 
 
-    def getPath(self):
-        self.path = filedialog.askdirectory()
-        return self.path
-
-    def startButton(self, path_value):
-        self.buttonFrame = Frame(self)
-        self.buttonFrame.pack()
-        self.start_Button = Button(self.buttonFrame, text = 'Start',
-                                   path_value)).grid(row = 0, column =0)
-
-    def beginOp(self, path_value):
-        count = 0
-        os.chdir(path_value)
-        self.file_list = os.listdir()
-        numFile = len(self.file_list)
-        if len(self.file_list) == 0 :
-            self.LabelErr = Label(text = "Error: Empty Folder").pack
-            exit()
-        for file in self.file_list:
-            if file.endswith(".txt")
          
 
 # Folder with created/edited files
@@ -89,3 +93,9 @@ for file in files:
         print(full_dest)
         print("\n")
         shutil.move(file, full_dest) #files moved to dest_folder
+
+       
+if __name__ == "__main__":
+    root = tk.Tk()
+    App = ParentWindow(root)
+    root.mainloop()
